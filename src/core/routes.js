@@ -5,8 +5,8 @@ import Main from 'core/main';
 
 export default () => (
   <Router>
-    <Route component={Main}>
-      <Route exact path="/" />
+    <Route path="/" component={Main}>
+      {/*...*/}
     </Route>
   </Router>
 );
