@@ -5,4 +5,4 @@ import ReactDOM from 'react-dom';
 import React from 'react';
 import Routes from 'core/routes';
 
-ReactDOM.render(<Routes />, document.getElementsByTagName('body')[0]);
+ReactDOM.render(<Routes />, document.getElementsByTagName('main')[0]);
