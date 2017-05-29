@@ -7,7 +7,7 @@ var extractSass = new ExtractTextPlugin({
 });
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/core/index.js',
   devtool: 'inline-source-map',
   output: {
     filename: 'bundle.js',
