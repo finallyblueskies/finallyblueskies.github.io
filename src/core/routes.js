@@ -6,7 +6,7 @@ import Main from 'core/main';
 export default () => (
   <Router>
     <Route path="/" component={Main}>
-      {/*...*/}
+      {/* ... */}
     </Route>
   </Router>
 );
