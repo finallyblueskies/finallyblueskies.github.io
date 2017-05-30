@@ -1,0 +1,199 @@
+h1 {
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  letter-spacing: 10px;
+  font-weight: 200;
+}
+
+hr {
+  margin: 2rem 0 3rem;;
+}
+
+nav {
+  position: relative;
+  top: 50%;
+  display: inline-block;
+  transform: translateY(-50%);
+
+  .links {
+    display: flex;
+    a {
+      margin: 0 50px;
+      position: relative;
+    }
+  }
+
+  .icon {
+    z-index: 2;
+    position: relative;
+  }
+
+  .icon-decoration {
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    position: absolute;
+    opacity: 0;
+    transition: all $speed $easing;
+    z-index: 1;
+  }
+
+  .github { 
+    .icon, .icon-decoration {
+      width: 36px;
+      height: 36px;
+    }
+    .icon {
+      background: url('/src/assets/img/icon_github.svg') center center no-repeat;
+      margin-bottom: 25px;
+    }
+    .icon-decoration  {
+      transform: scale(0);
+      transform-origin: center bottom;
+      background: url('/src/assets/img/icon_github_hover.svg') center bottom no-repeat;
+    }
+    &:hover {
+      .icon-decoration {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
+
+  .projects { 
+    .icon, .icon-decoration {
+      width: 45px;
+      height: 32px;
+    }
+    .icon {
+      z-index: 4;
+      background: url('/src/assets/img/icon_projects.svg') center center no-repeat;
+      margin-bottom: 25px;
+    }
+    .icon-decoration {
+      opacity: 1;
+      transition: none;
+    }
+    .icon-decoration.layer-1 {
+      z-index: 3;
+    }
+    .icon-decoration.layer-2 {
+      z-index: 2;
+      background: url('/src/assets/img/icon_projects_hover_helper.svg') center center no-repeat;
+    }
+    .icon-decoration.layer-3 {
+      z-index: 1;
+    }
+    .square-1,
+    .square-2,
+    .square-3,
+    .square-4,
+    .square-5 {
+      transition: all $speed $easing;
+      position: absolute;
+      transform: scaleX(-1);
+    }
+    .square-1 {
+      background: #5FFFBA;
+      height: 85%;
+      right: 2px;
+      width: 0;
+      bottom: 0;
+    }
+    .square-2 {
+      top: 17%;
+      left: 14%;
+      height: 26%;
+      width: 0;
+      background: #FFA28D;
+    }
+    .square-3 {
+      top: 30%;
+      left: 26%;
+      height: 26%;
+      width: 0;
+      background: #FFD561
+    }
+    .square-4 {
+      bottom: 14%;
+      left: 47%;
+      height: 26%;
+      width: 0;
+      background: #FFA28D;
+    }
+    .square-5 {
+      top: 16%;
+      left: 55%;
+      height: 54%;
+      width: 0;
+      background: #FFD561;
+    }
+    &:hover {
+      .square-1 {
+        width: 85%;
+      }
+      .square-2 {
+        transition-delay: .2s;
+        width: 18%;
+      }
+      .square-3 {
+        transition-delay: .3s;
+        width: 13%;
+      }
+      .square-4 {
+        transition-delay: .4s;
+        width: 15%;
+      }
+      .square-5 {
+        transition-delay: .5s;
+        width: 28%;
+      }
+    }
+  }
+
+  .contact {
+    .icon, .icon-decoration {
+      width: 47px;
+      height: 32px;
+    }
+    .icon {
+      margin-bottom: 29px;
+      background: url('/src/assets/img/icon_mail.svg') center center no-repeat;
+      z-index: 3;
+    }
+    .icon-decoration.layer-1 {
+      background: url('/src/assets/img/icon_mail_hover.svg') center top no-repeat;
+      transform-origin: center top;
+      transform: scaleY(0);
+      top: 1px;
+      left: 1px;
+      opacity: 1;
+      z-index: 2;
+    }
+    .icon-decoration.layer-2 {
+      z-index: 1;
+      opacity: 1;
+    }
+    .square-1 {
+      width: 0;
+      bottom: 0;
+      right: 0;
+      width: 0;
+      height: 70%;
+      background: #FFD561;
+      transform: scaleX(-1);
+      transition: all $speed $easing;
+      position: absolute;
+    }
+    &:hover {
+      .icon-decoration.layer-1 {
+        transition-delay: .2s; 
+        transform: scaleY(1);
+      }
+      .square-1 {
+        width: 80%;
+      }
+    }
+  }
+}
