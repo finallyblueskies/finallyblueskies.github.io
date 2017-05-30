@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="45px" height="32px" viewBox="0 0 45 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 44.1 (41455) - http://www.bohemiancoding.com/sketch -->
+    <title>Projects icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD" transform="translate(-697.000000, -514.000000)" fill-rule="nonzero" fill="#2D2220">
+            <g id="Head" transform="translate(439.000000, 333.000000)">
+                <g id="Nav" transform="translate(64.000000, 179.000000)">
+                    <g id="Projects-icon" transform="translate(194.000000, 2.000000)">
+                        <path d="M0,0 L0,32 L44.2352941,32 L44.2352941,0 L0,0 Z M42.6554622,30.4 L1.57983193,30.4 L1.57983193,1.6 L42.6554622,1.6 L42.6554622,30.4 Z" id="Shape"></path>
+                        <path d="M14.2184874,9.6 L14.2184874,4.8 L4.7394958,4.8 L4.7394958,14.4 L9.4789916,14.4 L9.4789916,19.2 L18.9579832,19.2 L18.9579832,9.6 L14.2184874,9.6 Z M9.4789916,12.8 L6.31932773,12.8 L6.31932773,6.4 L12.6386555,6.4 L12.6386555,9.6 L9.4789916,9.6 L9.4789916,12.8 Z M17.3781513,17.6 L11.0588235,17.6 L11.0588235,11.2 L17.3781513,11.2 L17.3781513,17.6 Z" id="Shape"></path>
+                        <path d="M25.2773109,4.8 L25.2773109,17.6 L20.5378151,17.6 L20.5378151,27.2 L30.0168067,27.2 L30.0168067,24 L39.4957983,24 L39.4957983,4.8 L25.2773109,4.8 Z M28.4369748,25.6 L22.1176471,25.6 L22.1176471,19.2 L28.4369748,19.2 L28.4369748,25.6 Z M37.9159664,22.4 L30.0168067,22.4 L30.0168067,17.6 L26.8571429,17.6 L26.8571429,6.4 L37.9159664,6.4 L37.9159664,22.4 Z" id="Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

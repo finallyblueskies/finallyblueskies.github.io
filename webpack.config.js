@@ -20,7 +20,7 @@ module.exports = {
     loaders: [
       {
         //Sass
-        test: /\.sass$/,
+        test: /\.(sass|scss)$/,
         use: extractSass.extract({
           fallback: 'style-loader',
           use: [
@@ -28,7 +28,12 @@ module.exports = {
               loader: 'css-loader'
             },
             {
-              loader: 'sass-loader'
+              loader: 'sass-loader',
+              options: {
+                sourceMap: true,
+                data: '@import "variables";',
+                includePaths: [path.join(__dirname, 'src/core')]
+              }
             }
           ]
         })

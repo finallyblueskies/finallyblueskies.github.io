@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="45px" height="16px" viewBox="0 0 45 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 44.1 (41455) - http://www.bohemiancoding.com/sketch -->
+    <title>Mail icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD" transform="translate(-883.000000, -514.000000)" fill="#53FFB8">
+            <g id="Head" transform="translate(439.000000, 333.000000)">
+                <g id="Nav" transform="translate(64.000000, 179.000000)">
+                    <g id="Mail-icon" transform="translate(379.000000, 2.000000)">
+                        <g id="Group-22" transform="translate(0.000000, 0.190236)">
+                            <g id="Group-5" transform="translate(1.000000, 0.000000)">
+                                <path d="M22.2300318,15.087634 L44.2796146,1.95731144 C44.0222383,0.993370088 43.1456447,0.278672141 42.0919157,0.278672141 L37.0639931,0.278672141 L35.2169394,0.484373021 L1.79132215,0.484373021 C1.08883613,0.802683871 0.586195269,1.46332903 0.486272688,2.25159883 L22.2300318,15.087634 Z" id="Fill-2"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
