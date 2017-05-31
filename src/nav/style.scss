@@ -5,6 +5,10 @@ h1 {
   font-weight: 200;
 }
 
+h1, h2 {
+  transition: opacity linear $speed;
+}
+
 hr {
   margin: 2rem 0 0;
   height: 2px;
@@ -16,6 +20,7 @@ nav {
   top: 50%;
   display: inline-block;
   transform: translateY(-50%);
+  transition: all $speed $easing;
 
   .links {
     display: flex;
@@ -244,5 +249,18 @@ nav {
         width: 80%;
       }
     }
+  }
+}
+
+nav {
+  .page-view & {
+    top: 0;
+    transform: translateY(-84px);
+  }
+}
+
+h1, h2 {
+  .page-view & {
+    opacity: 0;
   }
 }

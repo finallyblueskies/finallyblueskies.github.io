@@ -6,10 +6,25 @@ class Main extends React.Component {
     super(props);
     this.state = {
       hoverEffectStyles: {},
-      hoverEffectClass: ''
+      hoverEffectClass: '',
+      viewClass: ''
     };
 
     this.updateNavHover = this.updateNavHover.bind(this);
+  }
+
+  componentDidMount() {
+    this.setViewClass(this.props);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setViewClass(nextProps);
+  }
+
+  setViewClass({ location: { pathname } }) {
+    this.setState({
+      viewClass: pathname !== '/' ? 'page-view' : ''
+    });
   }
 
   updateNavHover(e, mouseOnElement) {
@@ -18,9 +33,9 @@ class Main extends React.Component {
       const hel = document.querySelector('.hover-effect');
       // Work out position and size of effect
       // -- find x offset of hovered icon from start of container
-      const left = el.offsetLeft + el.offsetWidth / 2 - hel.offsetWidth / 2;
-      // -- set hover effect width
       // -- add icon width/2
+      const left = el.offsetLeft + el.offsetWidth / 2 - hel.offsetWidth / 2;
+      // -- add icon specific styles
       const hoverEffectClass = `style-${el.getAttribute('class')}`;
       // -- set hover effect styles
       this.setState({
@@ -31,7 +46,7 @@ class Main extends React.Component {
         }
       });
     } else {
-      // Set hover effect style width: 0
+      // Hide hover effect
       this.setState({
         hoverEffectStyles: {
           ...this.state.hoverEffectStyles,
@@ -43,9 +58,9 @@ class Main extends React.Component {
 
   render() {
     const { updateNavHover } = this;
-    const { hoverEffectStyles, hoverEffectClass } = this.state;
+    const { hoverEffectStyles, hoverEffectClass, viewClass } = this.state;
     return (
-      <div>
+      <div className={viewClass}>
         <Nav
           {...{
             updateNavHover,

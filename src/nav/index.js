@@ -7,13 +7,12 @@ export default ({ updateNavHover, hoverEffectStyles, hoverEffectClass }) => {
     onMouseEnter: e => updateNavHover(e, true),
     onMouseLeave: e => updateNavHover(e, false)
   };
-  const navHoverOut = {};
   return (
     <nav>
       <h1>Bogdan Protsenko</h1>
       <h2>Front end developer based in London.</h2>
       <hr />
-      <div className="links" {...navHoverOut}>
+      <div className="links">
         <div
           className={`hover-effect ${hoverEffectClass}`}
           style={hoverEffectStyles}
