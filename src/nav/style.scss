@@ -16,19 +16,27 @@ hr {
 }
 
 nav {
-  position: relative;
+  position: absolute;
   top: 50%;
-  display: inline-block;
-  transform: translateY(-50%);
+  left: 50%;
+  z-index: 10;
+  width: 100%;
+  max-width: $nav-width;
   transition: all $speed $easing;
-
+  transform: translate(-50%, -50%);
+  
+  .spacing {
+    height: 2rem;
+  }
   .links {
     display: flex;
     position: relative;
-    a {
+    width: 100%;
+    a, .hover-effect {
       position: relative;
-      width: 150px;
-      height: 150px;
+      display: block;
+      width: 33%;
+      padding-top: 33%;
       .inner {
         position: absolute;
         top: 50%;
@@ -38,8 +46,6 @@ nav {
     }
     .hover-effect {
       opacity: 0;
-      width: 150px;
-      height: 150px;
       top: -2px;
       position: absolute;
       transition: all $speed $easing;
@@ -47,21 +53,25 @@ nav {
       overflow: hidden;
       font-size: 0;
       white-space: nowrap;
-      > div {
+      .inner {
+        width: 100%;
+        height: 100%;
+      }
+      .inner div {
         top: 0;
         width: 100%;
         height: 100%;
         display: inline-block;
         transition: $speed $easing;
       }
-      &.style-github > div {
+      &.style-github .inner div {
         width: 100%;
         background: #FFD561;
         &:first-child {
           background: #21bdff;
         }
       }
-      &.style-projects > div {
+      &.style-projects .inner div {
         width: 25%;
         &:nth-child(odd) {
           background: #ececec;
@@ -70,7 +80,7 @@ nav {
           background: #f6f6f6;
         }
       }
-      &.style-contact > div {
+      &.style-contact .inner div {
         width: 50%;
         &:nth-child(even) {
           background: #53ffb8;
@@ -78,6 +88,16 @@ nav {
         &:nth-child(odd) {
           background: #FFD561;
         }
+      }
+    }
+  }
+
+  // Wider screens
+  @media (min-width: $nav-width){
+    .links {
+      a, .hover-effect {
+        height: 150px;
+        padding-top: 0;
       }
     }
   }
@@ -252,10 +272,11 @@ nav {
   }
 }
 
+// Parent styles
+
 nav {
   .page-view & {
     top: 0;
-    transform: translateY(-84px);
   }
 }
 

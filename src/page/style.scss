@@ -1,0 +1,10 @@
+.page {
+  // position: absolute;
+  height: 100vh;
+  padding-top: 33vw;
+  z-index: 5;
+  
+  @media (min-width: $nav-width){
+    padding-top: 150px;
+  }
+}

@@ -49,5 +49,13 @@ module.exports = {
       }
     ]
   },
+  //Port, route all requests
+  //into index.html
+  devServer: {
+    port: 8080,
+    historyApiFallback: {
+      index: 'index.html'
+    }
+  },
   plugins: [extractSass]
 };

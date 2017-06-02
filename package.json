@@ -43,6 +43,7 @@
   },
   "dependencies": {
     "bulma": "^0.4.2",
+    "ramda": "^0.24.0",
     "react": "^15.5.4",
     "react-router": "^4.1.1"
   }

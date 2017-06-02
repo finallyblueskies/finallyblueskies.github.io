@@ -2,25 +2,37 @@ import 'nav/style.scss';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default ({ updateNavHover, hoverEffectStyles, hoverEffectClass }) => {
+export default ({
+  updateNavHover,
+  hoverEffectStyles,
+  hoverEffectClass,
+  navMinusTop
+}) => {
   const linkHoverIn = {
     onMouseEnter: e => updateNavHover(e, true),
     onMouseLeave: e => updateNavHover(e, false)
   };
+  const navTop = navMinusTop && {
+    style: {
+      transform: `translate(-50%, -${navMinusTop}px)`
+    }
+  };
   return (
-    <nav>
+    <nav {...navTop}>
       <h1>Bogdan Protsenko</h1>
       <h2>Front end developer based in London.</h2>
-      <hr />
+      <div className="spacing" />
       <div className="links">
         <div
           className={`hover-effect ${hoverEffectClass}`}
           style={hoverEffectStyles}
         >
-          <div />
-          <div />
-          <div />
-          <div />
+          <div className="inner">
+            <div />
+            <div />
+            <div />
+            <div />
+          </div>
         </div>
         <a className="github" href="www.github.com" {...linkHoverIn}>
           <div className="inner">
