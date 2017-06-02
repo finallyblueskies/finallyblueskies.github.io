@@ -27,7 +27,8 @@
   "devDependencies": {
     "buble": "^0.15.2",
     "buble-loader": "^0.4.1",
-    "css-loader": "^0.28.3",
+    "bulma-loader": "^1.0.1",
+    "css-loader": "^0.28.4",
     "extract-text-webpack-plugin": "^2.1.0",
     "html-webpack-plugin": "^2.28.0",
     "husky": "^0.13.4",
@@ -45,6 +46,7 @@
     "bulma": "^0.4.2",
     "ramda": "^0.24.0",
     "react": "^15.5.4",
+    "react-motion": "^0.5.0",
     "react-router": "^4.1.1"
   }
 }

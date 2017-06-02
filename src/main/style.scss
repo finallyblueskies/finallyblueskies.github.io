@@ -2,6 +2,10 @@ main {
   width: 100vw;
   height: 100vh;
   
+  // @include desktop {
+  //   font-size: 100em;
+  // }
+
   // React instance and main
   // nav container
   > div {

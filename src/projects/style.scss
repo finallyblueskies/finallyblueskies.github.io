@@ -1,0 +1,19 @@
+.projects-container {
+  > div {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -2.5%;
+  }
+  .item {
+    width: calc(33% - 5%);
+    height: 0;
+    margin: 2.5%;
+    display: block;
+    padding-top: 25%;
+    background: whitesmoke;
+  }
+
+  @include desktop {
+    
+  }
+}

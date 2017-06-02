@@ -20,23 +20,19 @@ module.exports = {
     loaders: [
       {
         //Sass
-        test: /\.(sass|scss)$/,
-        use: extractSass.extract({
-          fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader'
-            },
-            {
-              loader: 'sass-loader',
-              options: {
-                sourceMap: true,
-                data: '@import "variables";',
-                includePaths: [path.join(__dirname, 'src/core')]
-              }
+        test: /\.(scss|sass)$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+              data: '@import "config";',
+              includePaths: [path.join(__dirname, 'src')]
             }
-          ]
-        })
+          }
+        ]
       },
       {
         //Buble
