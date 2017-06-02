@@ -1,10 +1,10 @@
 .page {
-  // position: absolute;
   height: 100vh;
-  padding-top: 33vw;
+  padding-top: calc(33vw + 25px);
   z-index: 5;
+  overflow: auto;
   
   @media (min-width: $nav-width){
-    padding-top: 150px;
+    padding-top: calc(150px + 25px);
   }
 }

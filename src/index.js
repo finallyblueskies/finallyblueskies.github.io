@@ -1,11 +1,14 @@
-// Bulma and other core CSS
-// import '/src/core/variables.scss';
-import 'bulma';
-import 'core/style.scss';
-
 // App entry
+import 'bulma';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import React from 'react';
-import Router from 'core/router';
+import Main from 'main';
 
-ReactDOM.render(<Router />, document.getElementsByTagName('main')[0]);
+const App = () => (
+  <Router>
+    <Route path="/" component={Main} />
+  </Router>
+);
+
+ReactDOM.render(<App />, document.getElementsByTagName('main')[0]);
