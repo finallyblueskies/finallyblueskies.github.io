@@ -1,7 +1,7 @@
 import './style.scss';
+import { Route } from 'react-router-dom';
 import React from 'react';
 import Nav from 'nav';
-import { Route } from 'react-router-dom';
 import Projects from 'projects';
 
 // import Contact from 'core/contact';

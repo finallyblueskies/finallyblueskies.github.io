@@ -1,15 +1,16 @@
 import './style.scss';
-import React from 'react';
-import { Link } from 'react-router-dom';
-import Page from 'page';
 import { Motion, spring, StaggeredMotion } from 'react-motion';
+import { Route, Link } from 'react-router-dom';
+import React from 'react';
+import Page from 'page';
+import Project from 'project';
 
 // Temp
 
-const squares = [];
+const projects = [];
 let count = 10;
 while (count--) {
-  squares.push({
+  projects.push({
     title: `square-${count}`
   });
 }
@@ -31,7 +32,7 @@ export default () => {
     <Page>
       <div className="projects-container">
         <StaggeredMotion
-          defaultStyles={squares.map(() => ({ opacity: 0, scale: 0.8 }))}
+          defaultStyles={projects.map(() => ({ opacity: 0, scale: 0.8 }))}
           styles={prevValues =>
             prevValues.map((_, i) => {
               const prev = prevValues[i - 1];
@@ -44,13 +45,18 @@ export default () => {
           {interpolatingStyles => (
             <div>
               {interpolatingStyles.map((styleValues, i) => (
-                <div className="item" key={i} style={animStyles(styleValues)} />
+                <Link
+                  to={`projects/${projects[i].title}`}
+                  className={`item ${projects[i].title}`}
+                  key={i}
+                  style={animStyles(styleValues)}
+                />
               ))}
             </div>
           )}
-
         </StaggeredMotion>
       </div>
+      <Route path="/projects/:projectSlug" component={Project} />
     </Page>
   );
 };
