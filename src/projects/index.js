@@ -4,6 +4,7 @@ import { Route, Link } from 'react-router-dom';
 import React from 'react';
 import Page from 'page';
 import Project from 'project';
+import ProjectAnimation from 'project/animation';
 
 // Temp
 
@@ -41,7 +42,6 @@ export default () => {
                 : { opacity: spring(prev.opacity), scale: spring(prev.scale) };
             })}
         >
-
           {interpolatingStyles => (
             <div>
               {interpolatingStyles.map((styleValues, i) => (
@@ -56,7 +56,14 @@ export default () => {
           )}
         </StaggeredMotion>
       </div>
-      <Route path="/projects/:projectSlug" component={Project} />
+      <Route
+        path="/projects/:projectSlug"
+        children={({ match }) => (
+          <ProjectAnimation {...{ match }}>
+            <Project />
+          </ProjectAnimation>
+        )}
+      />
     </Page>
   );
 };
