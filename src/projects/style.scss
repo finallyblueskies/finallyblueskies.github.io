@@ -1,19 +1,15 @@
 .projects-container {
   > div {
-    display: flex;
+    font-size: 0;
     flex-wrap: wrap;
     margin: -2.5%;
   }
   .item {
     width: calc(33% - 5%);
-    height: 0;
     margin: 2.5%;
-    display: block;
-    padding-top: 25%;
+    display: inline-block;
     background: whitesmoke;
-  }
-
-  @include desktop {
-    
+    height: 0;
+    padding-top: 25%;
   }
 }

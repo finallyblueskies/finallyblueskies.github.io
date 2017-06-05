@@ -94,6 +94,11 @@ class Main extends React.Component {
     } = this.state;
     return (
       <div className={viewClass}>
+        {/* 
+          The position of this in the dom is important!!! If placed after the <nav> component, 
+          boundingClientRect will work incorrectly and fetch some really strange 'top' values. 
+        */}
+        <Route path="/projects" component={Projects} />
         <Nav
           {...{
             updateNavHover,
@@ -102,9 +107,6 @@ class Main extends React.Component {
             ...(viewClass && { navMinusTop })
           }}
         />
-        {/*Properly position the page*/}
-        <Route path="/projects" component={Projects} />
-        {/*<Footer />*/}
       </div>
     );
   }
