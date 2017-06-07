@@ -92,6 +92,7 @@ class Main extends React.Component {
       navMinusTop,
       navLinksHeight
     } = this.state;
+    const { match } = this.props;
     return (
       <div className={viewClass}>
         {/* 
