@@ -14,7 +14,7 @@ export default ({
   };
   const navTop = navMinusTop && {
     style: {
-      transform: `translate(-50%, -${navMinusTop}px)`
+      transform: `translate(-50%, -${navMinusTop}px) translateZ(0)`
     }
   };
   return (

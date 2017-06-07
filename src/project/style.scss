@@ -1,20 +1,7 @@
-.project-animation-container {
+.project-container {
   position: fixed;
   top: 0;
   left: 0;
-
-  .background {
-    background: darken(whitesmoke, 5%);
-    transform: translate3d(0,0,0);
-    position: fixed;
-  }
+  color: white;
+  z-index: 20;
 }
-
-  // .main-image {
-  //   width: 300px;
-  //   height: 400px;
-  //   background: red;
-  // }
-  // .container {
-  //   opacity: 0;
-  // }
