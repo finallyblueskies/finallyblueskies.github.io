@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import React from 'react';
 import Nav from 'nav';
 import Projects from 'projects';
+import Contact from 'contact';
 
 // import Contact from 'core/contact';
 
@@ -100,6 +101,7 @@ class Main extends React.Component {
           boundingClientRect will work incorrectly and fetch some really strange 'top' values. 
         */}
         <Route path="/projects" component={Projects} />
+        <Route path="/contact" component={Contact} />
         <Nav
           {...{
             updateNavHover,

@@ -11,6 +11,26 @@ main {
   > div {
     width: 100%;
     height: 100%;
-    text-align: center;
   }
+}
+
+// General form config
+
+.input, .textarea {
+  border: 2px solid black;
+  box-shadow: none;
+  border-radius: 0;
+
+  &:hover:not(:focus) {
+    border-color: black;
+    background: darken(white, 2%);
+  }
+}
+
+.input {
+  height: 3.2rem;
+}
+
+.control {
+  margin-bottom: 1.5rem;
 }

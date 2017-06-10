@@ -19,11 +19,13 @@ nav {
   position: absolute;
   top: 50%;
   left: 50%;
-  z-index: 10;
+  z-index: 100;
   width: 100%;
   max-width: $nav-width;
   transition: all $speed $easing;
   transform: translate(-50%, -50%);
+  text-align: center;
+
   .spacing {
     height: 2rem;
   }
