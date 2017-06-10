@@ -41,7 +41,7 @@ export default ({
             <span className="label">GitHub</span>
           </div>
         </a>
-        <Link className="projects" to="projects" {...linkHoverIn}>
+        <Link className="projects" to="/projects" {...linkHoverIn}>
           <div className="inner">
             <span className="icon" />
             <div className="icon-decoration layer-1">
@@ -57,7 +57,7 @@ export default ({
             <span className="label">Projects</span>
           </div>
         </Link>
-        <Link className="contact" to="contact" {...linkHoverIn}>
+        <Link className="contact" to="/contact" {...linkHoverIn}>
           <div className="inner">
             <span className="icon" />
             <div className="icon-decoration layer-1" />

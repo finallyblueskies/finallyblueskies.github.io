@@ -1,50 +1,31 @@
 import './style.scss';
-import { Motion, spring, StaggeredMotion } from 'react-motion';
-import { Route, Link } from 'react-router-dom';
 import React from 'react';
 import Page from 'page';
 import Project from 'project';
-import ProjectAnimItem from 'projects/project-item';
-import { length, last, reject, equals, map, merge } from 'ramda';
+import ProjectData from 'projects/data';
+import ProjectAnimItem from 'projects/project-anim-item';
+
+import { Motion, spring, StaggeredMotion } from 'react-motion';
+import { Route, Link } from 'react-router-dom';
+import { length, last, reject, equals, map, merge, find, propEq } from 'ramda';
+
 import {
   originRect,
   animOrigin,
   animWindow,
-  inArray,
-  addValidOnce,
-  applySpring
-} from 'helper-functions';
+  applySpring,
+  fadeInSpringParams
+} from 'helpers/motion';
 
-// Temp
-const getRandomColor = () => {
-  var letters = '0123456789ABCDEF';
-  var color = '#';
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-};
-
-const projectsArr = [];
-let count = 10;
-while (count--) {
-  projectsArr.push({
-    slug: `square-${count}`,
-    backgroundColor: getRandomColor()
-  });
-}
-const rand = (min, max) => {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-};
-
-// end temp
+import { inArray, addValidOnce } from 'helpers/general';
 
 class Projects extends React.Component {
   constructor() {
     this.state = {
       activeSlug: null,
       activeSlugs: [],
-      projects: projectsArr
+      projects: ProjectData,
+      showProjectContent: false
     };
     this.updateAnimOrigin = this.updateAnimOrigin.bind(this);
   }
@@ -124,10 +105,6 @@ class Projects extends React.Component {
       projects,
       showProjectContent
     } = this.state;
-    const fadeInSpringParams = {
-      damping: 15,
-      stiffness: 60
-    };
     return (
       <Page>
         <div className="projects-container">
@@ -166,6 +143,16 @@ class Projects extends React.Component {
                       to={`projects/${slug}`}
                       className={`item ${slug}`}
                     >
+                      <div
+                        className={`project-image`}
+                        style={{
+                          ...(!animatingProject && { opacity: 1 }),
+                          ...(animatingProject && {
+                            userSelect: 'none',
+                            zIndex: 100
+                          })
+                        }}
+                      />
                       <ProjectAnimItem
                         {...{
                           onRest: () => this.onRest(slug),
@@ -186,7 +173,16 @@ class Projects extends React.Component {
           <Route
             path="/projects/:projectSlug"
             children={({ match }) => (
-              <div>{match && showProjectContent && <Project />}</div>
+              <div>
+                {match && <div className="project-overlay" />}
+                {match &&
+                  <Project
+                    {...{
+                      showProjectContent,
+                      project: find(propEq('slug', activeSlug))(projects)
+                    }}
+                  />}
+              </div>
             )}
           />
         </div>
