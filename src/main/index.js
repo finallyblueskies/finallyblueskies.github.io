@@ -1,9 +1,15 @@
 import './style.scss';
 import { Route } from 'react-router-dom';
+import Async from 'helpers/webpack';
 import React from 'react';
 import Nav from 'nav';
-import Projects from 'projects';
-import Contact from 'contact';
+
+const Projects = props => (
+  <Async load={System.import('projects')} componentProps={props} />
+);
+const Contact = props => (
+  <Async load={System.import('contact')} componentProps={props} />
+);
 
 // import Contact from 'core/contact';
 
