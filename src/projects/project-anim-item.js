@@ -7,10 +7,9 @@ import { applySpring } from 'helpers/motion';
 export default ({
   style: { scale, opacity },
   backgroundColor,
-  animRect,
-  onRest,
-  originRect,
   animatingProject,
+  projectStyles,
+  onRest,
   active
 }) => {
   const linkStyles = {
@@ -19,15 +18,15 @@ export default ({
   };
   return (
     <div>
-      <Motion style={animRect || {}} onRest={onRest}>
+      <Motion style={projectStyles} onRest={onRest}>
         {style => (
           <div
             style={{
               backgroundColor,
               ...(animatingProject && { position: 'fixed', zIndex: 5 }),
               ...(active && { zIndex: 10 }),
-              ...style,
-              ...linkStyles
+              ...(!active && linkStyles),
+              ...style
             }}
             className="project-item-animation"
           />

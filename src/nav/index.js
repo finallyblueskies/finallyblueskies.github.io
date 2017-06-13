@@ -1,8 +1,10 @@
 import './style.scss';
 import React from 'react';
+import { Motion } from 'react-motion';
 import { Link } from 'react-router-dom';
 
 export default ({
+  navStyles,
   updateNavHover,
   hoverEffectStyles,
   hoverEffectClass,
@@ -12,62 +14,67 @@ export default ({
     onMouseEnter: e => updateNavHover(e, true),
     onMouseLeave: e => updateNavHover(e, false)
   };
-  const navTop = navMinusTop && {
-    style: {
-      transform: `translate(-50%, -${navMinusTop}px) translateZ(0)`
-    }
-  };
   return (
-    <nav {...navTop}>
-      <h1>Bogdan Protsenko</h1>
-      <h2>Front end developer based in London.</h2>
-      <div className="spacing" />
-      <div className="links">
-        <div
-          className={`hover-effect ${hoverEffectClass}`}
-          style={hoverEffectStyles}
+    <Motion style={navStyles || {}}>
+      {style => (
+        <nav
+          style={{
+            top: style.top
+          }}
         >
-          <div className="inner">
-            <div />
-            <div />
-            <div />
-            <div />
-          </div>
-        </div>
-        <a className="github" href="www.github.com" {...linkHoverIn}>
-          <div className="inner">
-            <span className="icon" />
-            <span className="icon-decoration" />
-            <span className="label">GitHub</span>
-          </div>
-        </a>
-        <Link className="projects" to="/projects" {...linkHoverIn}>
-          <div className="inner">
-            <span className="icon" />
-            <div className="icon-decoration layer-1">
-              <div className="square-2" />
-              <div className="square-3" />
-              <div className="square-4" />
-              <div className="square-5" />
+          <h1 style={{ opacity: style.opacity }}>Bogdan Protsenko</h1>
+          <h2 style={{ opacity: style.opacity }}>
+            Front end developer based in London.
+          </h2>
+          <div style={{ opacity: style.opacity }} className="spacing" />
+          <div className="links">
+            <div
+              className={`hover-effect ${hoverEffectClass}`}
+              style={hoverEffectStyles}
+            >
+              <div className="inner">
+                <div />
+                <div />
+                <div />
+                <div />
+              </div>
             </div>
-            <div className="icon-decoration layer-2" />
-            <div className="icon-decoration layer-3">
-              <div className="square-1" />
-            </div>
-            <span className="label">Projects</span>
+            <a className="github" href="www.github.com" {...linkHoverIn}>
+              <div className="inner">
+                <span className="icon" />
+                <span className="icon-decoration" />
+                <span className="label">GitHub</span>
+              </div>
+            </a>
+            <Link className="projects" to="/projects" {...linkHoverIn}>
+              <div className="inner">
+                <span className="icon" />
+                <div className="icon-decoration layer-1">
+                  <div className="square-2" />
+                  <div className="square-3" />
+                  <div className="square-4" />
+                  <div className="square-5" />
+                </div>
+                <div className="icon-decoration layer-2" />
+                <div className="icon-decoration layer-3">
+                  <div className="square-1" />
+                </div>
+                <span className="label">Projects</span>
+              </div>
+            </Link>
+            <Link className="contact" to="/contact" {...linkHoverIn}>
+              <div className="inner">
+                <span className="icon" />
+                <div className="icon-decoration layer-1" />
+                <div className="icon-decoration layer-2">
+                  <div className="square-1" />
+                </div>
+                <span className="label">Contact</span>
+              </div>
+            </Link>
           </div>
-        </Link>
-        <Link className="contact" to="/contact" {...linkHoverIn}>
-          <div className="inner">
-            <span className="icon" />
-            <div className="icon-decoration layer-1" />
-            <div className="icon-decoration layer-2">
-              <div className="square-1" />
-            </div>
-            <span className="label">Contact</span>
-          </div>
-        </Link>
-      </div>
-    </nav>
+        </nav>
+      )}
+    </Motion>
   );
 };
