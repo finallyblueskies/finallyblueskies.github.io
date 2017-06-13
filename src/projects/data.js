@@ -1,5 +1,6 @@
 export default [
   {
+    projectStyles: {},
     slug: 'daily-thought',
     backgroundColor: '#4D2D4C',
     color: '#FFBEA4',
@@ -17,6 +18,7 @@ export default [
     ]
   },
   {
+    projectStyles: {},
     slug: 'pearson-360',
     backgroundColor: '#333333',
     color: '#FFFFFF',

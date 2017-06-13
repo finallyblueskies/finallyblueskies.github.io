@@ -13,7 +13,7 @@ var extractSass = new ExtractTextPlugin({
 
 var plugins = [
   extractSass,
-  // new BundleAnalyzerPlugin(),
+  new BundleAnalyzerPlugin(),
   new webpack.optimize.CommonsChunkPlugin({
     name: 'vendor',
     filename: 'vendor.bundle.js'
@@ -43,10 +43,11 @@ module.exports = {
     app: './src/index.js',
     vendor: Object.keys(pjson.dependencies)
   },
-  devtool: 'inline-source-map',
+  devtool: process.env.NODE_ENV === 'production' ? 'inline-source-map' : false,
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/dist/'
   },
   resolve: {
     modules: [path.resolve(__dirname, 'src'), 'node_modules']
@@ -89,7 +90,7 @@ module.exports = {
   devServer: {
     port: 8080,
     historyApiFallback: {
-      index: 'index.html'
+      index: 'dist/index.html'
     }
   },
   plugins: plugins

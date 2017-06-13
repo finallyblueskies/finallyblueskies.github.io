@@ -17,18 +17,17 @@ hr {
 
 nav {
   position: absolute;
-  top: 50%;
   left: 50%;
   z-index: 100;
   width: 100%;
   max-width: $nav-width;
-  transition: all $speed $easing;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   text-align: center;
 
   .spacing {
     height: 2rem;
   }
+
   .links {
     display: flex;
     position: relative;
@@ -270,19 +269,5 @@ nav {
         width: 80%;
       }
     }
-  }
-}
-
-// Parent styles
-
-nav {
-  .page-view & {
-    top: 0;
-  }
-}
-
-h1, h2 {
-  .page-view & {
-    opacity: 0;
   }
 }

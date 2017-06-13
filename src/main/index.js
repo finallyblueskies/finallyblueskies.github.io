@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import Async from 'helpers/webpack';
 import React from 'react';
 import Nav from 'nav';
+import { applySpring } from 'helpers/motion';
 
 const Projects = props => (
   <Async load={System.import('projects')} componentProps={props} />
@@ -17,6 +18,7 @@ class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      navStyles: {},
       hoverEffectStyles: {},
       hoverEffectClass: '',
       navMinusTop: 0,
@@ -30,32 +32,39 @@ class Main extends React.Component {
   // 2. Set correct minus top amount
   // 3. Attach global onResize listener
   componentDidMount() {
-    this.setViewClass(this.props);
-    this.navSpacing();
-    window.addEventListener('resize', () => this.navSpacing());
+    this.updateNavPosition(this.props, true);
+    window.addEventListener('resize', () => this.updateNavPosition(this.props));
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setViewClass(nextProps);
-  }
-
-  // Lets the app know whether to display
-  // the intro view or the page view
-  setViewClass({ location: { pathname } }) {
-    this.setState({
-      viewClass: pathname !== '/' ? 'page-view' : ''
-    });
+    this.updateNavPosition(nextProps);
   }
 
   // Gets the px. value to correctly offset the nav
   // in the Y position so it sticks to the top,
   // hiding the space used by the title
-  navSpacing() {
-    const els = ['nav h1', 'nav h2', 'nav .spacing'];
+  updateNavPosition(props, noSpringFlag) {
+    const { location: { pathname } } = props;
+    let navStyles;
+    if (pathname !== '/') {
+      navStyles = {
+        top: -['nav h1', 'nav h2', 'nav .spacing']
+          .map(selector => document.querySelector(selector).offsetHeight)
+          .reduce((a, b) => a + b, 0),
+        opacity: 0
+      };
+    } else {
+      navStyles = {
+        top: window.innerHeight / 2 -
+          document.querySelector('nav').getBoundingClientRect().height / 2,
+        opacity: 1
+      };
+    }
+    if (!noSpringFlag) {
+      navStyles = applySpring(navStyles);
+    }
     this.setState({
-      navMinusTop: els
-        .map(selector => document.querySelector(selector).offsetHeight)
-        .reduce((a, b) => a + b, 0)
+      navStyles
     });
   }
 
@@ -92,16 +101,10 @@ class Main extends React.Component {
 
   render() {
     const { updateNavHover } = this;
-    const {
-      hoverEffectStyles,
-      hoverEffectClass,
-      viewClass,
-      navMinusTop,
-      navLinksHeight
-    } = this.state;
+    const { hoverEffectStyles, hoverEffectClass, navStyles } = this.state;
     const { match } = this.props;
     return (
-      <div className={viewClass}>
+      <div>
         {/* 
           The position of this in the dom is important!!! If placed after the <nav> component, 
           boundingClientRect will work incorrectly and fetch some really strange 'top' values. 
@@ -110,10 +113,10 @@ class Main extends React.Component {
         <Route path="/contact" component={Contact} />
         <Nav
           {...{
+            navStyles,
             updateNavHover,
             hoverEffectStyles,
-            hoverEffectClass,
-            ...(viewClass && { navMinusTop })
+            hoverEffectClass
           }}
         />
       </div>

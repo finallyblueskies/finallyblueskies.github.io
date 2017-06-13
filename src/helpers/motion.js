@@ -11,31 +11,22 @@ export const fadeInSpringParams = {
 };
 
 /**
- * Returns the boundingClientRect of
- * an element
- */
-export const originRect = slug => {
-  const el = document.querySelector(`.${slug}`);
-  return el
-    ? pick(['top', 'left', 'width', 'height'], el.getBoundingClientRect())
-    : null;
-};
-
-/**
  * Updates an object's values through
  * react-motion's `spring()` function
  */
 export const applySpring = (obj, config) =>
   mapObjIndexed(
-    x =>
-      spring(
-        x,
-        config || {
-          damping: 15,
-          stiffness: 70,
-          precision: 20
-        }
-      ),
+    value =>
+      true
+        ? spring(
+            value,
+            config || {
+              damping: 15,
+              stiffness: 70,
+              precision: 20
+            }
+          )
+        : value,
     obj
   );
 
@@ -49,6 +40,24 @@ export const staggeredMotionStyles = prevValues =>
           fadeInSpringParams
         );
   });
+
+/**
+ * Returns the boundingClientRect of
+ * an element
+ */
+export const originRect = slug => {
+  const el = document.querySelector(`.${slug}`);
+  return el
+    ? pick(['top', 'left', 'width', 'height'], el.getBoundingClientRect())
+    : null;
+};
+
+export const windowRect = () => ({
+  top: 0,
+  left: 0,
+  width: window.innerWidth,
+  height: window.innerHeight
+});
 
 /**
  * Returns an object to animate an element
@@ -78,5 +87,6 @@ export default {
   originRect,
   applySpring,
   animOrigin,
-  animWindow
+  animWindow,
+  windowRect
 };

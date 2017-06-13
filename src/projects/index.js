@@ -11,43 +11,71 @@ import { length, last, reject, equals, map, merge, find, propEq } from 'ramda';
 
 import {
   originRect,
-  animOrigin,
-  animWindow,
+  windowRect,
   applySpring,
   fadeInSpringParams
 } from 'helpers/motion';
 
+import { setGlobalState, getGlobalState } from 'helpers/general';
+
 import { inArray, addValidOnce } from 'helpers/general';
 
+const applyProjectAnimState = (
+  project,
+  activeSlug,
+  activeSlugs,
+  noSpringFlag
+) => {
+  const { slug } = project;
+  let projectStyles;
+  //If animating
+  if (inArray(slug, activeSlugs)) {
+    //If animating in
+    if (slug === activeSlug) {
+      projectStyles = windowRect();
+      //Animating out
+    } else {
+      projectStyles = originRect(slug);
+    }
+    if (!noSpringFlag) {
+      projectStyles = applySpring(projectStyles);
+    }
+  } else {
+    projectStyles = originRect(slug);
+  }
+
+  return merge(project, { projectStyles });
+};
+
 class Projects extends React.Component {
-  constructor() {
+  constructor(props) {
+    super(props);
+    const slug = this.getActiveSlug(props);
     this.state = {
-      activeSlug: null,
-      activeSlugs: [],
-      projects: ProjectData,
-      showProjectContent: false
+      activeSlug: slug,
+      activeSlugs: slug ? [slug] : [],
+      showProjectContent: !!slug,
+      projects: ProjectData
     };
-    this.updateAnimOrigin = this.updateAnimOrigin.bind(this);
+    this.updateProjectAnim = this.updateProjectAnim.bind(this);
   }
 
   componentDidMount() {
-    this.updateAnimOrigin();
-    window.addEventListener('resize', this.updateAnimOrigin);
+    this.updateProjectAnim(this.props, true);
+    window.addEventListener('resize', () =>
+      this.updateProjectAnim(this.props, true)
+    );
     document
       .querySelector('.page')
-      .addEventListener('scroll', this.updateAnimOrigin);
+      .addEventListener('scroll', () =>
+        this.updateProjectAnim(this.props, true)
+      );
   }
 
-  //Animation instance added here
   //Show project content flag removed here
   componentWillReceiveProps(nextProps) {
     const { activeSlugs } = this.state;
-    const slug = this.getActiveSlug(nextProps);
-    this.setState({
-      activeSlug: slug,
-      activeSlugs: addValidOnce(slug, activeSlugs),
-      ...(!slug && { showProjectContent: false })
-    });
+    this.updateProjectAnim(nextProps);
   }
 
   //Animation instance removed here
@@ -72,29 +100,30 @@ class Projects extends React.Component {
     return length(path) === 3 ? last(path) : null;
   }
 
-  //Check whether the project is on its way out
-  isAnimatingOut(slug) {
-    const { activeSlugs, activeSlug } = this.state;
-    return inArray(slug, activeSlugs) && activeSlug !== slug;
-  }
+  updateProjectAnim(props, noSpringFlag) {
+    const { projects, activeSlugs } = this.state;
+    const activeSlug = this.getActiveSlug(props);
+    const newActiveSlugs = addValidOnce(activeSlug, activeSlugs);
 
-  //Update the origin animation. This is done
-  //declaratively so that we can change the originAnim
-  //on the fly, necessary for the project to return to the correct
-  //place while scrolling
-  updateAnimOrigin() {
-    const { projects } = this.state;
+    if (activeSlug) {
+      setGlobalState({
+        globalStyles: {
+          color: find(propEq('slug', activeSlug))(projects).color
+        }
+      });
+    } else {
+      setGlobalState({
+        globalStyles: null
+      });
+    }
+
     this.setState({
-      projects: map(
-        x =>
-          merge(x, {
-            animOrigin: this.isAnimatingOut(x.slug)
-              ? // If this is currently animating out, return it quicker
-                animOrigin(x.slug, { stiffness: 200, precision: 50 })
-              : animOrigin(x.slug)
-          }),
-        projects
-      )
+      activeSlug,
+      activeSlugs: newActiveSlugs,
+      projects: map(project =>
+        applyProjectAnimState(project, activeSlug, newActiveSlugs, noSpringFlag)
+      )(projects),
+      ...(!activeSlug && { showProjectContent: false })
     });
   }
 
@@ -125,18 +154,14 @@ class Projects extends React.Component {
               <div className="projects-items-container">
                 {interpolatingStyles.map((style, i) => {
                   let animRect;
-                  const { slug, animOrigin, backgroundColor } = projects[i];
+                  const {
+                    slug,
+                    animOrigin,
+                    backgroundColor,
+                    projectStyles
+                  } = projects[i];
                   const animatingProject = inArray(slug, activeSlugs);
                   const active = slug === activeSlug;
-                  if (animatingProject) {
-                    if (active) {
-                      animRect = animWindow();
-                    } else {
-                      animRect = animOrigin;
-                    }
-                  } else {
-                    animRect = originRect(slug);
-                  }
                   return (
                     <Link
                       key={i}
@@ -158,8 +183,7 @@ class Projects extends React.Component {
                           onRest: () => this.onRest(slug),
                           animatingProject,
                           backgroundColor,
-                          originRect,
-                          animRect,
+                          projectStyles,
                           active,
                           style
                         }}
