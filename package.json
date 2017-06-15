@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server-dev": "NODE_ENV=development webpack-dev-server --progress",
-    "server-prod": "NODE_ENV=production webpack-dev-server --progress",
-    "build": "NODE_ENV=production webpack --progress",
+    "server-dev": "SET NODE_ENV=development webpack-dev-server --progress",
+    "server-prod": "SET NODE_ENV=production webpack-dev-server --progress",
+    "build": "SET NODE_ENV=production webpack --progress",
     "precommit": "lint-staged"
   },
   "lint-staged": {
