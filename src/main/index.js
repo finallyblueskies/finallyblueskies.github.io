@@ -1,3 +1,4 @@
+import '../assets/fonts/fonts.scss';
 import './style.scss';
 import { Route } from 'react-router-dom';
 import Async from 'helpers/webpack';
@@ -11,8 +12,6 @@ const Projects = props => (
 const Contact = props => (
   <Async load={System.import('contact')} componentProps={props} />
 );
-
-// import Contact from 'core/contact';
 
 class Main extends React.Component {
   constructor(props) {
@@ -28,9 +27,6 @@ class Main extends React.Component {
     this.updateNavHover = this.updateNavHover.bind(this);
   }
 
-  // 1. Set correct view class
-  // 2. Set correct minus top amount
-  // 3. Attach global onResize listener
   componentDidMount() {
     this.updateNavPosition(this.props, true);
     window.addEventListener('resize', () => this.updateNavPosition(this.props));

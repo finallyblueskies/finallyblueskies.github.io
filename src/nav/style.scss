@@ -1,6 +1,6 @@
 h1 {
   text-transform: uppercase;
-  font-size: 2.5rem;
+  font-size: 1.7rem;
   letter-spacing: 10px;
   font-weight: 200;
 }
@@ -22,16 +22,22 @@ nav {
   width: 100%;
   max-width: $nav-width;
   transform: translateX(-50%);
+  color: black;
   text-align: center;
 
+  .label {
+    font-family: 'Calluna Bold', Arial, sans-serif;
+    color: black;
+  }
   .spacing {
-    height: 2rem;
+    height: 4rem;
   }
 
   .links {
     display: flex;
     position: relative;
     width: 100%;
+    
     a, .hover-effect {
       position: relative;
       display: block;
@@ -125,7 +131,10 @@ nav {
     }
     .icon {
       background: url('/src/assets/img/icon_github.svg') center center no-repeat;
-      margin-bottom: 25px;
+      margin-bottom: 15px;
+      @include desktop {
+        margin-bottom: 25px;
+      }
     }
     .icon-decoration  {
       transform: scale(0);
@@ -148,7 +157,10 @@ nav {
     .icon {
       z-index: 4;
       background: url('/src/assets/img/icon_projects.svg') center center no-repeat;
-      margin-bottom: 25px;
+      margin-bottom: 15px;
+      @include desktop {
+        margin-bottom: 25px;
+      }
     }
     .icon-decoration {
       opacity: 1;
@@ -233,7 +245,10 @@ nav {
       height: 32px;
     }
     .icon {
-      margin-bottom: 29px;
+      margin-bottom: 15px;
+      @include desktop {
+        margin-bottom: 25px;
+      }
       background: url('/src/assets/img/icon_mail.svg') center center no-repeat;
       z-index: 3;
     }
@@ -261,6 +276,7 @@ nav {
       transition: all $speed $easing;
       position: absolute;
     }
+
     &:hover {
       .icon-decoration.layer-1 {
         transform: scaleY(1);

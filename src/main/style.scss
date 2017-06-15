@@ -14,6 +14,7 @@ main {
   }
 }
 
+
 // General form config
 
 .input, .textarea {
@@ -33,4 +34,17 @@ main {
 
 .control {
   margin-bottom: 1.5rem;
+}
+
+// General font config
+
+h1 {
+  font-family: 'Calluna Bold', Arial, sans-serif;
+}
+
+// General button config
+
+.button {
+  border-radius: 100px;
+  padding: 25px;
 }

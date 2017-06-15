@@ -75,6 +75,10 @@ module.exports = {
         ]
       },
       {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        loader: 'file-loader?name=dist/fonts/[name].[ext]'
+      },
+      {
         //Buble
         test: /.js$/,
         loaders: 'buble-loader',

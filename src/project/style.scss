@@ -13,12 +13,13 @@
     opacity: 1;
   }
   
-  .project-title {
+  h1 {
     width: 100%;
-    font-size: 3rem;
+    font-size: 2rem;
     margin-bottom: 40px;
     text-align: center;
     text-transform: uppercase;
+    font-family: 'Calluna Bold', Arial, sans-serif;
   }
 
   .description {
@@ -28,5 +29,13 @@
     p {
       margin-bottom: 10px;
     }
+  }
+
+  .project-link {
+    margin: 0 10px;
+  }
+
+  .description {
+    margin-bottom: 25px;
   }
 }

@@ -6,8 +6,8 @@ import { spring } from 'react-motion';
  */
 
 export const fadeInSpringParams = {
-  damping: 15,
-  stiffness: 60
+  damping: 10,
+  stiffness: 70
 };
 
 /**
@@ -22,7 +22,7 @@ export const applySpring = (obj, config) =>
             value,
             config || {
               damping: 15,
-              stiffness: 70,
+              stiffness: 80,
               precision: 20
             }
           )
