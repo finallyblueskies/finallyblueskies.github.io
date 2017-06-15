@@ -135,7 +135,7 @@ class Projects extends React.Component {
       showProjectContent
     } = this.state;
     return (
-      <Page>
+      <Page noPadding={true}>
         <div className="projects-container">
           <StaggeredMotion
             defaultStyles={projects.map(() => ({ opacity: 0, scale: 0.8 }))}

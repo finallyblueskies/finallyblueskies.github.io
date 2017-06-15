@@ -1,10 +1,16 @@
 .projects-container {
   .projects-items-container {
     font-size: 0;
-    margin: -2.5%;
+    margin: 0 -2.5%;
+    @include desktop {
+      margin: -2.5%;
+    }
   }
   .item {
-    margin: 2.5%;
+    margin: 0 2.5%;
+    @include desktop {
+      margin: 2.5%;
+    }
     display: inline-block;
     height: 0;
     height: 100vw;

@@ -43,7 +43,7 @@ export default ({
               <div className="inner">
                 <span className="icon" />
                 <span className="icon-decoration" />
-                <span className="label">GitHub</span>
+                <span className="label">SOCIAL</span>
               </div>
             </a>
             <Link className="projects" to="/projects" {...linkHoverIn}>
@@ -59,7 +59,7 @@ export default ({
                 <div className="icon-decoration layer-3">
                   <div className="square-1" />
                 </div>
-                <span className="label">Projects</span>
+                <span className="label">WORK</span>
               </div>
             </Link>
             <Link className="contact" to="/contact" {...linkHoverIn}>
@@ -69,7 +69,7 @@ export default ({
                 <div className="icon-decoration layer-2">
                   <div className="square-1" />
                 </div>
-                <span className="label">Contact</span>
+                <span className="label">CONTACT</span>
               </div>
             </Link>
           </div>
