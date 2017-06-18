@@ -65,7 +65,7 @@ module.exports = {
           'style-loader',
           'css-loader',
           {
-            loader: 'sass-loader',
+            loader: 'postcss-loader',
             options: {
               sourceMap: true
             }

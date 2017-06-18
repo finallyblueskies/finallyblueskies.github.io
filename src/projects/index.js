@@ -155,7 +155,8 @@ class Projects extends React.Component {
                     slug,
                     animOrigin,
                     backgroundColor,
-                    projectStyles
+                    projectStyles,
+                    image
                   } = projects[i];
                   const animatingProject = inArray(slug, activeSlugs);
                   const active = slug === activeSlug;
@@ -168,6 +169,7 @@ class Projects extends React.Component {
                       <div
                         className={`project-image`}
                         style={{
+                          backgroundImage: `url(${image})`,
                           ...(!animatingProject && { opacity: 1 }),
                           ...(animatingProject && {
                             userSelect: 'none',

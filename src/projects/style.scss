@@ -45,8 +45,6 @@
   }
   .project-image {
     opacity: 0;
-    width: 100px;
-    height: 10px;
     transform: translate3d(0,0,0);
     transition: all $speed/2 linear;
     position: absolute;
@@ -55,7 +53,8 @@
     right: 0;
     bottom: 0;
     margin: auto;
-    background: red;
+    background-position: center center;
+    background-repeat: no-repeat;
     z-index: 2;
   }
 }
