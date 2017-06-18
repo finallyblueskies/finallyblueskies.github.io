@@ -24,9 +24,7 @@ nav {
   transform: translateX(-50%);
   color: black;
   text-align: center;
-
   .label {
-    font-family: 'Calluna Bold', Arial, sans-serif;
     color: black;
   }
   .spacing {
@@ -168,10 +166,6 @@ nav {
     }
     .icon-decoration.layer-1 {
       z-index: 3;
-    }
-    .icon-decoration.layer-2 {
-      z-index: 2;
-      background: url('/src/assets/img/icon_projects_hover_helper.svg') center center no-repeat;
     }
     .icon-decoration.layer-3 {
       z-index: 1;

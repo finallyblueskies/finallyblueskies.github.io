@@ -25,6 +25,13 @@ class Main extends React.Component {
     };
 
     this.updateNavHover = this.updateNavHover.bind(this);
+
+    // Hello world
+    console.log(
+      'Taking a look under the hood?',
+      '🐙😸',
+      'https://github.com/notbogdan/bogdans.website'
+    );
   }
 
   componentDidMount() {

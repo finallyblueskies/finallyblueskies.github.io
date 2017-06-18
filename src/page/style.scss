@@ -1,10 +1,10 @@
 .page {
   height: 100vh;
-  padding: calc(33vw + 25px) 15px 0;
+  padding: calc(33vw + 25px) 15px 25px;
   z-index: 5;
   overflow: auto;
   
   @media (min-width: $nav-width){
-    padding: calc(150px + 25px) 25px 0;
+    padding: calc(150px + 25px) 25px 25px;
   }
 }

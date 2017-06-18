@@ -58,24 +58,34 @@ class Projects extends React.Component {
       projects: ProjectData
     };
     this.updateProjectAnim = this.updateProjectAnim.bind(this);
+    this.updateProjectAnimEvent = this.updateProjectAnimEvent.bind(this);
   }
 
+  // User interaction events
   componentDidMount() {
     this.updateProjectAnim(this.props, true);
-    window.addEventListener('resize', () =>
-      this.updateProjectAnim(this.props, true)
-    );
+    window.addEventListener('resize', this.updateProjectAnimEvent);
     document
       .querySelector('.page')
-      .addEventListener('scroll', () =>
-        this.updateProjectAnim(this.props, true)
-      );
+      .addEventListener('scroll', this.updateProjectAnimEvent);
   }
 
-  //Show project content flag removed here
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateProjectAnimEvent);
+    document
+      .querySelector('.page')
+      .removeEventListener('scroll', this.updateProjectAnimEvent);
+  }
+
+  updateProjectAnimEvent() {
+    this.updateProjectAnim(this.props, true);
+  }
+
   componentWillReceiveProps(nextProps) {
     const { activeSlugs } = this.state;
-    this.updateProjectAnim(nextProps);
+    if (this.getActiveSlug(this.props) !== this.getActiveSlug(nextProps)) {
+      this.updateProjectAnim(nextProps);
+    }
   }
 
   //Animation instance removed here
@@ -104,19 +114,6 @@ class Projects extends React.Component {
     const { projects, activeSlugs } = this.state;
     const activeSlug = this.getActiveSlug(props);
     const newActiveSlugs = addValidOnce(activeSlug, activeSlugs);
-
-    if (activeSlug) {
-      setGlobalState({
-        globalStyles: {
-          color: find(propEq('slug', activeSlug))(projects).color
-        }
-      });
-    } else {
-      setGlobalState({
-        globalStyles: null
-      });
-    }
-
     this.setState({
       activeSlug,
       activeSlugs: newActiveSlugs,

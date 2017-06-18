@@ -67,6 +67,12 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
+              sourceMap: true
+            }
+          },
+          {
+            loader: 'sass-loader',
+            options: {
               sourceMap: true,
               data: '@import "config";',
               includePaths: [path.join(__dirname, 'src')]

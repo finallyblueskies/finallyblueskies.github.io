@@ -55,8 +55,7 @@ export default ({
                   <div className="square-4" />
                   <div className="square-5" />
                 </div>
-                <div className="icon-decoration layer-2" />
-                <div className="icon-decoration layer-3">
+                <div className="icon-decoration layer-2">
                   <div className="square-1" />
                 </div>
                 <span className="label">WORK</span>

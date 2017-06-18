@@ -16,8 +16,12 @@ export default ({
         {description}
       </div>
       <div className="links has-text-centered">
-        {links.map(link => (
-          <a className="button is-primary project-link" href={link.href}>
+        {links.map((link, i) => (
+          <a
+            key={i}
+            className="button is-primary project-link"
+            href={link.href}
+          >
             {link.text}
           </a>
         ))}
