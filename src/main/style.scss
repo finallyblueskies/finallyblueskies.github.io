@@ -16,6 +16,16 @@ main {
 
 
 // General form config
+.input:focus, 
+.input.is-focused, 
+.input:active, 
+.input.is-active, 
+.textarea:focus, 
+.textarea.is-focused, 
+.textarea:active, 
+.textarea.is-active {
+  border-color: darken($success, 25%);
+}
 
 .input, .textarea {
   border: 2px solid black;
@@ -26,20 +36,25 @@ main {
     border-color: black;
     background: darken(white, 2%);
   }
+
+  &.is-danger:hover:not(:focus), {
+    border-color: $danger;
+  }
 }
+
 
 .input {
   height: 3.2rem;
 }
 
-.control {
+.field {
   margin-bottom: 1.5rem;
 }
 
 // General font config
 
 h1 {
-  font-family: 'Calluna Bold', Arial, sans-serif;
+  // font-family: 'Calluna Bold', Arial, sans-serif;
 }
 
 // General button config
@@ -47,4 +62,5 @@ h1 {
 .button {
   border-radius: 100px;
   padding: 25px;
+  border: none;
 }
