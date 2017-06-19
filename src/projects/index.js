@@ -59,26 +59,33 @@ class Projects extends React.Component {
     };
     this.updateProjectAnim = this.updateProjectAnim.bind(this);
     this.updateProjectAnimEvent = this.updateProjectAnimEvent.bind(this);
+    this.updateProjectAnimEventTrue = this.updateProjectAnimEventTrue.bind(
+      this
+    );
   }
 
   // User interaction events
   componentDidMount() {
     this.updateProjectAnim(this.props, true);
-    window.addEventListener('resize', this.updateProjectAnimEvent);
+    window.addEventListener('resize', this.updateProjectAnimEventTrue);
     document
       .querySelector('.page')
       .addEventListener('scroll', this.updateProjectAnimEvent);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.updateProjectAnimEvent);
+    window.removeEventListener('resize', this.updateProjectAnimEventTrue);
     document
       .querySelector('.page')
       .removeEventListener('scroll', this.updateProjectAnimEvent);
   }
 
-  updateProjectAnimEvent() {
+  updateProjectAnimEventTrue() {
     this.updateProjectAnim(this.props, true);
+  }
+
+  updateProjectAnimEvent() {
+    this.updateProjectAnim(this.props);
   }
 
   componentWillReceiveProps(nextProps) {
