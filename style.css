@@ -1,0 +1,48 @@
+html, body {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	font-family: sans-serif;
+}
+
+h1 {
+	margin: 0;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+nav ul {
+	display: flex;
+}
+
+nav li {
+	padding: 10px;
+}
+
+.home .hello-world	{
+	font-size: 28px;
+}
+
+.home.container {
+	display: flex;
+	width: 100%;
+	height: 100%;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	position: relative;
+	z-index: 1;
+}
+
+.home h1 {
+	margin-bottom: 10px;
+}
