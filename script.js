@@ -93,8 +93,8 @@ const loadExperiment = el => {
 
 	// Draw on mouse move
 	const onMouseMove = (e) => {
-		mouseX = e.offsetX;
-		mouseY = e.offsetY;
+		mouseX = e.clientX;
+		mouseY = e.clientY;
 		if (!started) {
 			started = true;		
 			pathFrame(mouseX, mouseY, randomColor());
