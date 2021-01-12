@@ -85,7 +85,6 @@ const loadExperiment = el => {
 			const pixel = pixelArr.pop();
 			ctx.fillRect(pxVal(pixel[0]), pxVal(pixel[1]), pxVal(size), pxVal(size));
 		}
-		newColor = updateColor(color);
 		ctx.fillStyle = `rgb(${color[0]}, ${color[1]}, ${color[2]}`;
 		ctx.fillRect(pxVal(x), pxVal(y), pxVal(size), pxVal(size))
 		currFrame = setTimeout(() => pathFrame(x, y, color), 50);
@@ -97,7 +96,7 @@ const loadExperiment = el => {
 		mouseY = e.clientY;
 		if (!started) {
 			started = true;		
-			pathFrame(mouseX, mouseY, randomColor());
+			pathFrame(mouseX, mouseY, [0, 0, 0]);
 		}
 	}
 
