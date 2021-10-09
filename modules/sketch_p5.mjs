@@ -12,7 +12,7 @@ class SketchP5 extends Sketch {
     this.container.style.height = "100%";
     this.el.append(this.container);
   }
-  #init(instance) {
+  init(instance) {
     instance.setup = () => this.setup(instance);
     instance.draw = () => this.draw(instance);
   }
@@ -25,7 +25,7 @@ class SketchP5 extends Sketch {
     if (!this.p5) {
       this.width = width;
       this.height = height;
-      this.p5 = new p5(this.#init.bind(this), this.container);
+      this.p5 = new p5(this.init.bind(this), this.container);
     } else {
       this.p5.resizeCanvas(width, height);
     }
