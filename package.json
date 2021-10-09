@@ -1,0 +1,14 @@
+{
+  "name": "notbogdan.github.io",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:notbogdan/notbogdan.github.io.git",
+  "author": "Bogdan Protsenko bogdanvp@gmail.com",
+  "license": "MIT",
+  "scripts": {
+    "dev": "live-server"
+  },
+  "dependencies": {
+    "live-server": "^1.2.1"
+  }
+}
