@@ -69,18 +69,16 @@ class AttractorSketch extends SketchP5 {
           e.attract(f, 0.3);
         }
       });
-      if (this.mousePressed) {
-        const mouse = new p5.createVector(p5.mouseX, p5.mouseY);
-        if (mouse.copy().sub(e.position).mag() < e.mass) {
-          e.attract(
-            {
-              isMouse: true,
-              position: mouse,
-              mass: 100,
-            },
-            10
-          );
-        }
+      const mouse = new p5.createVector(p5.mouseX, p5.mouseY);
+      if (mouse.copy().sub(e.position).mag() < e.mass / 2) {
+        e.attract(
+          {
+            isMouse: true,
+            position: mouse,
+            mass: 100,
+          },
+          10
+        );
       }
     });
 
