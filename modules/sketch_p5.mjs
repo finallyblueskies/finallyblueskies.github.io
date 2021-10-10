@@ -11,15 +11,27 @@ class SketchP5 extends Sketch {
     this.container.style.width = "100%";
     this.container.style.height = "100%";
     this.el.append(this.container);
+    this.mousePressed = false;
   }
   init(instance) {
     instance.setup = () => this.setup(instance);
     instance.draw = () => this.draw(instance);
+    instance.mousePressed = () => this.onMousePressed(instance);
+    instance.mouseDragged = () => this.onMouseDragged(instance);
+    instance.mouseReleased = () => this.onMouseReleased(instance);
   }
   setup(p5) {
     p5.resizeCanvas(this.width, this.height);
+    console.debug("P5 sketch setup", p5);
   }
   draw() {}
+  onMousePressed() {
+    this.mousePressed = true;
+  }
+  onMouseDragged() {}
+  onMouseReleased() {
+    this.mousePressed = false;
+  }
   onResize(width, height) {
     // init in first resize
     if (!this.p5) {
