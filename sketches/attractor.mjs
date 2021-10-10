@@ -24,27 +24,18 @@ class Attractor {
   }
   attract(walker, G) {
     const force = this.position.copy().sub(walker.position);
-    const distance = this.p5.constrain(force.mag(), 10, 1000);
-    force.normalize();
+    const distance = this.p5.constrain(force.mag(), 25, 1000);
     const strength = (G * this.mass * walker.mass) / (distance * distance);
-    force.mult(strength);
-    if (distance <= Math.min(window.innerWidth, window.innerHeight) / 2) {
+    force.normalize();
+    if (distance <= this.mass / 2 + walker.mass / 2 && !walker.isMouse) {
+      force.mult(strength * 3);
       this.acceleration.add(force.copy().div(this.mass));
     } else {
+      force.mult(strength);
       this.acceleration.sub(force.copy().div(this.mass));
     }
   }
   draw() {
-    // if (this.p5.mouseX !== 0 && this.p5.mouseY !== 0) {
-    //   const mouse = new this.p5.createVector(this.p5.mouseX, this.p5.mouseY);
-    //   this.attract(
-    //     {
-    //       position: mouse,
-    //       mass: 1000,
-    //     },
-    //     0.04
-    //   );
-    // }
     this.frictionMag = 0.005 * 1;
     this.friction = this.velocity.copy();
     this.friction.mult(-1);
@@ -78,6 +69,19 @@ class AttractorSketch extends SketchP5 {
           e.attract(f, 0.3);
         }
       });
+      if (this.mousePressed) {
+        const mouse = new p5.createVector(p5.mouseX, p5.mouseY);
+        if (mouse.copy().sub(e.position).mag() < e.mass) {
+          e.attract(
+            {
+              isMouse: true,
+              position: mouse,
+              mass: 100,
+            },
+            10
+          );
+        }
+      }
     });
 
     this.attractors.forEach((e) => e.draw());
