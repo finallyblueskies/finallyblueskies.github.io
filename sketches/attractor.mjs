@@ -77,7 +77,7 @@ class AttractorSketch extends SketchP5 {
             position: mouse,
             mass: 100,
           },
-          10
+          5
         );
       }
     });
