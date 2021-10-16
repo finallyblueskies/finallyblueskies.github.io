@@ -12,7 +12,7 @@ class Sketch {
 
   }
   destroy() {
-    ro.disconnect();
+    this.ro.disconnect();
   }
 }
 
