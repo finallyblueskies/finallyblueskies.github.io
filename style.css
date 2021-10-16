@@ -72,7 +72,7 @@ nav li.linkedin:hover {
 	box-shadow: 5px 5px black;
   margin-top: 16px;
   margin-left: 16px;
-  z-index: 1;
+  z-index: 3;
   position: relative;
 }
 
@@ -81,13 +81,22 @@ nav li.linkedin:hover {
   margin-bottom: 15px;
 }
 
-.home.container {
+.container {
   top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
   position: absolute;
   z-index: 1;
+}
+
+.container.home {
+  background: #F5D547;
+}
+
+.container.sketch {
+  z-index: 2;
+  cursor: pointer;
 }
 
 .home h1 {

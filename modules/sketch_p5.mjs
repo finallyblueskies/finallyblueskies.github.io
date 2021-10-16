@@ -42,6 +42,11 @@ class SketchP5 extends Sketch {
       this.p5.resizeCanvas(width, height);
     }
   }
+  destroy() {
+    Sketch.prototype.destroy.call(this);
+    this.p5.remove();
+    this.container.remove();
+  }
 }
 
 export default SketchP5;
