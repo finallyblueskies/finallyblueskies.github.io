@@ -54,7 +54,7 @@ class AttractorSketch extends SketchP5 {
   setup(p5) {
     SketchP5.prototype.setup.call(this, p5);
     this.attractors = [
-      ...Array(Math.round((window.innerWidth + window.innerHeight) / 100) * 2),
+      ...Array(Math.round((window.innerWidth + window.innerHeight) / 70)),
     ].map(() => new Attractor(p5));
   }
   draw(p5) {
