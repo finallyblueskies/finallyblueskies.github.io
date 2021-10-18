@@ -56,6 +56,7 @@ class SnakeSketch extends SketchP5 {
     this.position = this.randomLoc(p5);
     this.acceleration = p5.createVector(0, 0);
     this.velocity = p5.createVector(0, 0);
+    this.friction = p5.createVector(-.01, -.01);
     this.segments = [];
     this.initFood(p5);
   }
@@ -83,9 +84,8 @@ class SnakeSketch extends SketchP5 {
       .createVector(p5.mouseX, p5.mouseY)
       .sub(this.position)
       .normalize();
-    this.velocity.add(this.acceleration);
-    this.velocity.x = p5.constrain(this.velocity.x, -5, 5);
-    this.velocity.y = p5.constrain(this.velocity.y, -5, 5);
+
+    this.velocity.add(this.acceleration).normalize().mult(4);
     this.position.add(this.velocity);
 
     const angle = p5.atan2(this.velocity.y, this.velocity.x);
