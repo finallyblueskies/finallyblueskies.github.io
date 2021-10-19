@@ -69,7 +69,7 @@ class SnakeSketch extends SketchP5 {
     };
   }
   initFood(p5) {
-    this.food = [...Array(5)].map(() => this.generateBit(p5));
+    this.food = [...Array(20)].map(() => this.generateBit(p5));
   }
   draw(p5) {
     p5.noStroke();
