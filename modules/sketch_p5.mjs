@@ -43,7 +43,8 @@ class SketchP5 extends Sketch {
     if (!this.p5) {
       this.width = width;
       this.height = height;
-
+      
+      // eslint-disable-next-line
       new p5((p5) => this.init(p5), this.container);
     } else {
       this.p5.resizeCanvas(width, height);
