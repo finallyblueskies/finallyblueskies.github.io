@@ -6,9 +6,18 @@
   "author": "Bogdan Protsenko bogdanvp@gmail.com",
   "license": "MIT",
   "scripts": {
-    "dev": "live-server"
+    "dev": "live-server",
+    "prepare": "husky install"
   },
   "dependencies": {
     "live-server": "^1.2.1"
+  },
+  "devDependencies": {
+    "husky": ">=6",
+    "lint-staged": ">=10",
+    "prettier": "^2.4.1"
+  },
+  "lint-staged": {
+    "*.{js,css,md}": "prettier --write"
   }
 }

@@ -8,9 +8,7 @@ class Sketch {
     );
     this.ro.observe(this.el);
   }
-  onResize(width, height) {
-
-  }
+  onResize(width, height) {}
   destroy() {
     this.ro.disconnect();
   }
