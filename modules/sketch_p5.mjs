@@ -4,25 +4,31 @@ import "https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js";
 class SketchP5 extends Sketch {
   constructor(el) {
     super(el);
+
+    // Create sketch container
     this.container = document.createElement("div");
     this.container.style.position = "absolute";
     this.container.style.top = 0;
     this.container.style.left = 0;
     this.container.style.width = "100%";
     this.container.style.height = "100%";
+
+    // Insert sketch container
     this.el.append(this.container);
+
     this.mousePressed = false;
   }
   init(instance) {
-    instance.setup = () => this.setup(instance);
-    instance.draw = () => this.draw(instance);
-    instance.mousePressed = () => this.onMousePressed(instance);
-    instance.mouseDragged = () => this.onMouseDragged(instance);
-    instance.mouseReleased = () => this.onMouseReleased(instance);
+    this.p5 = instance;
+    instance.setup = () => this.setup();
+    instance.draw = () => this.draw();
+    instance.mousePressed = () => this.onMousePressed();
+    instance.mouseDragged = () => this.onMouseDragged();
+    instance.mouseReleased = () => this.onMouseReleased();
   }
-  setup(p5) {
-    p5.resizeCanvas(this.width, this.height);
-    console.debug("P5 sketch setup", p5);
+  setup() {
+    this.p5.resizeCanvas(this.width, this.height);
+    console.debug("P5 sketch setup", this.p5);
   }
   draw() {}
   onMousePressed() {
@@ -37,7 +43,8 @@ class SketchP5 extends Sketch {
     if (!this.p5) {
       this.width = width;
       this.height = height;
-      this.p5 = new p5(this.init.bind(this), this.container);
+
+      new p5((p5) => this.init(p5), this.container);
     } else {
       this.p5.resizeCanvas(width, height);
     }

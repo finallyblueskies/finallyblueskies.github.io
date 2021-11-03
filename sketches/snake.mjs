@@ -1,12 +1,15 @@
 import SketchP5 from "../modules/sketch_p5.mjs";
 
 class SnakeSketch extends SketchP5 {
-  setup(p5) {
-    SketchP5.prototype.setup.call(this, p5);
-    this.initGame(p5);
+  setup() {
+    SketchP5.prototype.setup.call(this);
+    this.initGame();
   }
-  randomLoc(p5) {
-    return p5.createVector(p5.random(p5.width), p5.random(p5.height));
+  randomLoc() {
+    return this.p5.createVector(
+      this.p5.random(this.p5.width),
+      this.p5.random(this.p5.height)
+    );
   }
   foodHitTest(segment) {
     let hitIndex = -1;
@@ -51,44 +54,44 @@ class SnakeSketch extends SketchP5 {
     }
     return false;
   }
-  initGame(p5) {
+  initGame() {
     this.snakeLength = 5;
-    this.position = this.randomLoc(p5);
-    this.acceleration = p5.createVector(0, 0);
-    this.velocity = p5.createVector(0, 0);
-    this.friction = p5.createVector(-0.01, -0.01);
+    this.position = this.randomLoc();
+    this.acceleration = this.p5.createVector(0, 0);
+    this.velocity = this.p5.createVector(0, 0);
+    this.friction = this.p5.createVector(-0.01, -0.01);
     this.segments = [];
-    this.initFood(p5);
+    this.initFood();
   }
-  generateBit(p5) {
-    const pos = this.randomLoc(p5);
+  generateBit() {
+    const pos = this.randomLoc();
     return {
       x: pos.x,
       y: pos.y,
       size: 0,
     };
   }
-  initFood(p5) {
-    this.food = [...Array(20)].map(() => this.generateBit(p5));
+  initFood() {
+    this.food = [...Array(20)].map(() => this.generateBit());
   }
-  draw(p5) {
-    p5.noStroke();
-    p5.clear();
-    p5.background("#DB3069");
+  draw() {
+    this.p5.noStroke();
+    this.p5.clear();
+    this.p5.background("#DB3069");
     this.food.forEach((bit) => {
-      p5.fill("#F5D547");
-      p5.ellipse(bit.x, bit.y, bit.size);
+      this.p5.fill("#F5D547");
+      this.p5.ellipse(bit.x, bit.y, bit.size);
       bit.size < 20 && (bit.size += 1);
     });
-    this.acceleration = p5
-      .createVector(p5.mouseX, p5.mouseY)
+    this.acceleration = this.p5
+      .createVector(this.p5.mouseX, this.p5.mouseY)
       .sub(this.position)
       .normalize();
 
     this.velocity.add(this.acceleration).normalize().mult(4);
     this.position.add(this.velocity);
 
-    const angle = p5.atan2(this.velocity.y, this.velocity.x);
+    const angle = this.p5.atan2(this.velocity.y, this.velocity.x);
     const segmentLayout = {
       x: this.position.x,
       y: this.position.y,
@@ -103,19 +106,19 @@ class SnakeSketch extends SketchP5 {
         const foodHitIndex = this.foodHitTest(segment);
         if (foodHitIndex > -1) {
           this.snakeLength += 5;
-          this.food[foodHitIndex] = this.generateBit(p5);
+          this.food[foodHitIndex] = this.generateBit(this.p5);
         }
         if (this.selfHitTest(segment)) {
-          this.initGame(p5);
+          this.initGame(this.p5);
         }
       }
-      p5.push();
-      p5.rectMode(p5.CENTER);
-      p5.translate(segment.x, segment.y);
-      p5.rotate(segment.angle);
-      p5.fill("white");
-      p5.rect(0, 0, 10, 10);
-      p5.pop();
+      this.p5.push();
+      this.p5.rectMode(this.p5.CENTER);
+      this.p5.translate(segment.x, segment.y);
+      this.p5.rotate(segment.angle);
+      this.p5.fill("white");
+      this.p5.rect(0, 0, 10, 10);
+      this.p5.pop();
     });
   }
 }
