@@ -30,11 +30,11 @@ a {
 }
 
 nav ul {
-	justify-content: center;
-	display: flex;
+  justify-content: center;
+  display: flex;
 }
 nav li {
-	margin: 0;
+  margin: 0;
   transition: all 0.45s ease-out;
 }
 
@@ -59,7 +59,7 @@ nav li:hover i {
 }
 
 nav li.linkedin:hover {
-	background: #0a66c2;
+  background: #0a66c2;
 }
 
 .home .hello-world-container {
@@ -69,7 +69,7 @@ nav li.linkedin:hover {
   display: inline-block;
   text-align: center;
   border: 5px solid black;
-	box-shadow: 5px 5px black;
+  box-shadow: 5px 5px black;
   margin-top: 16px;
   margin-left: 16px;
   z-index: 3;
@@ -83,15 +83,15 @@ nav li.linkedin:hover {
 
 .container {
   top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   position: absolute;
   z-index: 1;
 }
 
 .container.home {
-  background: #F5D547;
+  background: #f5d547;
 }
 
 .container.sketch {

@@ -56,7 +56,7 @@ class SnakeSketch extends SketchP5 {
     this.position = this.randomLoc(p5);
     this.acceleration = p5.createVector(0, 0);
     this.velocity = p5.createVector(0, 0);
-    this.friction = p5.createVector(-.01, -.01);
+    this.friction = p5.createVector(-0.01, -0.01);
     this.segments = [];
     this.initFood(p5);
   }

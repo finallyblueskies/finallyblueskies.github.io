@@ -2,4 +2,4 @@
 
 Bogdan Protsenko's personal website
 
-*Vanilla flavoured*
+_Vanilla flavoured_
