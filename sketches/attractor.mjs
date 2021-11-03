@@ -51,17 +51,17 @@ class Attractor {
 }
 
 class AttractorSketch extends SketchP5 {
-  setup(p5) {
-    SketchP5.prototype.setup.call(this, p5);
+  setup() {
+    SketchP5.prototype.setup.call(this);
     this.attractors = [
       ...Array(Math.round((window.innerWidth + window.innerHeight) / 70)),
-    ].map(() => new Attractor(p5));
+    ].map(() => new Attractor(this.p5));
   }
-  draw(p5) {
-    p5.clear();
-    p5.background(255, 204, 0);
-    p5.blendMode(p5.DIFFERENCE);
-    p5.noStroke();
+  draw() {
+    this.p5.clear();
+    this.p5.background(255, 204, 0);
+    this.p5.blendMode(this.p5.DIFFERENCE);
+    this.p5.noStroke();
 
     this.attractors.forEach((e) => {
       this.attractors.forEach((f) => {
@@ -69,7 +69,7 @@ class AttractorSketch extends SketchP5 {
           e.attract(f, 0.3);
         }
       });
-      const mouse = new p5.createVector(p5.mouseX, p5.mouseY);
+      const mouse = new this.p5.createVector(this.p5.mouseX, this.p5.mouseY);
       if (mouse.copy().sub(e.position).mag() < e.mass / 2) {
         e.attract(
           {
