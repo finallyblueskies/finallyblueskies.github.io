@@ -16,7 +16,7 @@ const newSketchIndex = () => {
 };
 
 const initNewSketch = () => {
-  const newSketch = sketches[2];
+  const newSketch = sketches[newSketchIndex()];
 	currSketch = new newSketch(sketchContainer);
 };
 
