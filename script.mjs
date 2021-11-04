@@ -7,17 +7,17 @@ const sketches = [SnakeSketch, AttractorSketch, SpiralSketch];
 let currSketch;
 
 const newSketchIndex = () => {
-	if (!currSketch) {
-		return Math.floor(Math.random() * sketches.length);
-	} else {
-		const currIndex = sketches.indexOf(currSketch.constructor);
-		return currIndex === sketches.length - 1 ? 0 : currIndex + 1;
-	}
+  if (!currSketch) {
+    return Math.floor(Math.random() * sketches.length);
+  } else {
+    const currIndex = sketches.indexOf(currSketch.constructor);
+    return currIndex === sketches.length - 1 ? 0 : currIndex + 1;
+  }
 };
 
 const initNewSketch = () => {
   const newSketch = sketches[newSketchIndex()];
-	currSketch = new newSketch(sketchContainer);
+  currSketch = new newSketch(sketchContainer);
 };
 
 sketchContainer.addEventListener("click", () => {
