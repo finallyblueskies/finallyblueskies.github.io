@@ -4,7 +4,7 @@ class SpiralSketch extends SketchP5 {
   setup() {
     SketchP5.prototype.setup.call(this);
 
-    this.rChange = .3;
+    this.rChange = .31;
     this.tChange = 1.501;
 
     this.generateSpiral();
@@ -44,8 +44,8 @@ class SpiralSketch extends SketchP5 {
       this.p5.ellipse(
         this.width / 2 + point.x,
         this.height / 2 + point.y,
-        5,
-        5
+        3,
+        3
       );
     });
 
