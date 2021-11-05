@@ -25,7 +25,7 @@ class SpiralSketch extends SketchP5 {
   generateSpiral() {
     let points = [];
     let r = 1;
-    let t = 0;
+    let t = 0.5;
     for (let i = 0; i < 2000; i++) {
       const x = r * this.p5.cos(t);
       const y = r * this.p5.sin(t);
