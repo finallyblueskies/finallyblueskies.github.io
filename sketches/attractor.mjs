@@ -27,10 +27,11 @@ class Attractor {
     const distance = this.p5.constrain(force.mag(), 25, 1000);
     const strength = (G * this.mass * walker.mass) / (distance * distance);
     force.normalize();
+    // repel
     if (distance <= this.mass / 2 + walker.mass / 2 && !walker.isMouse) {
       force.mult(strength * 3);
       this.acceleration.add(force.copy().div(this.mass));
-    } else {
+    } else { //attract
       force.mult(strength);
       this.acceleration.sub(force.copy().div(this.mass));
     }
