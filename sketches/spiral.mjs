@@ -4,7 +4,7 @@ class SpiralSketch extends SketchP5 {
   setup() {
     SketchP5.prototype.setup.call(this);
 
-    this.rChange = .31;
+    this.rChange = 0.31;
     this.tChange = 1.501;
 
     this.generateSpiral();
@@ -38,7 +38,7 @@ class SpiralSketch extends SketchP5 {
   draw() {
     this.p5.noStroke();
     this.p5.clear();
-    this.p5.fill(0);
+    this.p5.background("black");
 
     this.points.forEach((point) => {
       this.p5.ellipse(
@@ -49,10 +49,10 @@ class SpiralSketch extends SketchP5 {
       );
     });
 
-		// change rChange and tChange by a random number between -1 and 1
-		this.rChange += .00001;
-		this.tChange += .000001;
-		this.generateSpiral();
+    // change rChange and tChange by a random number between -1 and 1
+    this.rChange += 0.00001;
+    this.tChange += 0.000001;
+    this.generateSpiral();
   }
 }
 
