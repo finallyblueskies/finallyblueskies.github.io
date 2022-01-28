@@ -59,10 +59,19 @@
           </ul>
         </nav>
       </header>
-
-      <div class="control-panel is-flex is-align-items-flex-end">
-        <button class="button prev-sketch mr-2"><</button>
-        <button class="button next-sketch mr-4">></button>
+      <div class="pl-4 pr-4 pb-4" style="height: 100%">
+        <div class="sketch-container"></div>
+      </div>
+      <div
+        class="
+          control-panel
+          is-flex is-align-items-flex-start is-flex-direction-column
+        "
+      >
+        <div class="mb-1">
+          <button class="button prev-sketch mr-1 is-small"><</button>
+          <button class="button next-sketch mr-1 is-small">></button>
+        </div>
         <div>
           <div class="mb-2 has-text-white">
             Now playing:<span class="current-sketch-title ml-2"></span>
@@ -70,7 +79,6 @@
           <div class="current-sketch-tags tags"></div>
         </div>
       </div>
-      <div class="sketch-container"></div>
     </div>
     <!-- <div class="sketch-container"> -->
     <!-- <div class="hello-world-container">
