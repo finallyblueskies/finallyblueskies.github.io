@@ -25,6 +25,10 @@ class SketchP5 extends Sketch {
     instance.mousePressed = () => this.onMousePressed();
     instance.mouseDragged = () => this.onMouseDragged();
     instance.mouseReleased = () => this.onMouseReleased();
+
+    instance.touchStarted = () => this.onMousePressed();
+    instance.touchMoved = () => this.onMouseDragged();
+    instance.touchEnded = () => this.onMouseReleased();
   }
   setup() {
     this.p5.resizeCanvas(this.width, this.height);
@@ -43,7 +47,7 @@ class SketchP5 extends Sketch {
     if (!this.p5) {
       this.width = width;
       this.height = height;
-      
+
       // eslint-disable-next-line
       new p5((p5) => this.init(p5), this.container);
     } else {
